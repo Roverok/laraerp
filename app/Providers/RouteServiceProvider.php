@@ -35,17 +35,12 @@ class RouteServiceProvider extends ServiceProvider {
      * @return void
      */
     public function map(Router $router) {
-        
-        $router->controller('auth', 'Laraerp\Http\Controllers\AuthController');
-        $router->controller('password', 'Laraerp\Http\Controllers\PasswordController');
-
-        $router->group(['namespace' => $this->namespace], function($router) {
-            require app_path('Http/routes.php');
+        $router->get('/', function(){
+            return view('app');
         });
 
-        $router->group(['middleware' => 'auth'], function() use($router) {
-            $router->controller('/cliente', 'Laraerp\Http\Controllers\ClienteController');
-            $router->controller('/', 'Laraerp\Http\Controllers\DashboardController');
+        $router->get('/templates/{name}', function($name){
+            return view('templates.'.$name);
         });
     }
 

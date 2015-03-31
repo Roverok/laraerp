@@ -12,13 +12,20 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.less('app.less');
+
+    mix.styles([
+        "../../bower_components/angular-material/angular-material.min.css",
+        "*"
+    ]);
     
     mix.scripts([
-        "../../node_modules/jquery/dist/jquery.min.js",
-        "../../node_modules/bootstrap/dist/js/bootstrap.min.js",
-        "../../node_modules/jquery-mask-plugin/dist/jquery.mask.min.js",
-        "consultaCep.js",
-        "app.js"
+        "../../bower_components/angular/angular.js",
+        "../../bower_components/angular-route/angular-route.min.js",
+        "../../bower_components/angular-animate/angular-animate.js",
+        "../../bower_components/angular-aria/angular-aria.js",
+        "../../bower_components/angular-material/angular-material.js",
+        "*",
+        "factories/*.js",
+        "controllers/*.js"
     ], 'public/js/main.js');
 });
